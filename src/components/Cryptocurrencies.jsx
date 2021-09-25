@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import millify from 'millify'
+import { Helmet } from 'react-helmet'
 import { Row, Card, Col, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { useGetCryptosQuery } from '../services/cryptoApi'
@@ -22,6 +23,11 @@ const Cryptocurrencies = ({ simplified }) => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>CryptoMyn | Cryptocurrencies</title>
+        <meta name='description' content='All cryptocurrency news' />
+      </Helmet>
       {!simplified && (
         <div className='search-crypto'>
           <Input

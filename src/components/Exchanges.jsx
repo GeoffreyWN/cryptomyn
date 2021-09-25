@@ -1,5 +1,6 @@
 import React from 'react'
 import millify from 'millify'
+import { Helmet } from 'react-helmet'
 import { Collapse, Row, Col, Typography, Avatar } from 'antd'
 import HTMLReactParser from 'html-react-parser'
 
@@ -17,6 +18,11 @@ const Exchanges = () => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>CryptoMyn | Exchanges</title>
+        <meta name='description' content='Cryptocurrency exchange news' />
+      </Helmet>
       <Row>
         <Col span={6}>Exchanges</Col>
         <Col span={6}>24h Trade Volume</Col>

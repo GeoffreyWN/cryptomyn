@@ -1,5 +1,6 @@
 import React from 'react'
 import millify from 'millify'
+import {Helmet} from "react-helmet"
 import { Row, Typography, Col, Statistic } from 'antd'
 import { Link } from 'react-router-dom'
 import { useGetCryptosQuery } from '../services/cryptoApi'
@@ -16,6 +17,11 @@ const HomePage = () => {
   if (isFetching) return <Loader />
   return (
     <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>CryptoMyn | Home</title>
+        <meta name="description" content="Cryptocurrency news at the touch of a button" />
+      </Helmet>
       <Title level={2} className='heading'>
         Global Crypto Stats
       </Title>
