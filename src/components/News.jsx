@@ -4,6 +4,7 @@ import moment from 'moment'
 import { Row, Card, Col, Select, Avatar, Typography } from 'antd'
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi.js'
 import { useGetCryptosQuery } from '../services/cryptoApi.js'
+import Loader from './Loader.js'
 
 const { Text, Title } = Typography
 const { Option } = Select
@@ -12,16 +13,15 @@ const demoImage =
   'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const News = ({ simplified }) => {
-    const [newsCategory, setNewsCategory] = useState('Cryptocurrency')
-    const { data } = useGetCryptosQuery(100)
-
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency')
+  const { data } = useGetCryptosQuery(100)
 
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory: newsCategory,
     count: simplified ? 6 : 12,
   })
 
-  if (!cryptoNews?.value) return 'Loading..'
+  if (!cryptoNews?.value) return <Loader />
 
   return (
     <Row gutter={[24, 24]}>
@@ -37,8 +37,12 @@ const News = ({ simplified }) => {
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
           >
-              <Option value="Cryptocurrency ">Cryptocurrency</Option>
-              {data?.data?.coins.map(coin => <Option value={coin.name}>{coin.name}</Option>)}
+            <Option value='Cryptocurrency '>Cryptocurrency</Option>
+            {data?.data?.coins.map((coin) => (
+              <Option key={coin.name} value={coin.name}>
+                {coin.name}
+              </Option>
+            ))}
           </Select>
         </Col>
       )}
