@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 
 import { Row, Card, Col, Select, Avatar, Typography } from 'antd'
-import { Link } from 'react-router-dom'
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi.js'
 import { useGetCryptosQuery } from '../services/cryptoApi.js'
 
