@@ -52,6 +52,9 @@ a:hover {
   margin: 0px;
   background-color: rgb(0, 21, 41);
 }
+.ant-menu-item-selected {
+  background-color: #062a78 !important;
+}
 
 .logo-container {
   background-color: #001529;
@@ -79,6 +82,9 @@ a:hover {
   font-size: 1.2rem !important;
   background-color: var(--bgSecondary) !important;
   border: none !important;
+  border-radius: 100% !important;
+  height: 50px !important;
+  width: 50px !important;
 }
 
 .nav-link-icon {
@@ -166,6 +172,15 @@ a:hover {
   }
   .show-more {
     font-size: 1.3rem !important;
+  }
+  .main-heading {
+    font-size: 24px !important;
+  }
+  .routes {
+    padding: 20px 30px;
+  }
+  .btn-show-more {
+    font-size: 14px !important;
   }
 }
 
@@ -262,6 +277,7 @@ a:hover {
 
 .stats {
   font-weight: 800;
+  color: #001529 !important;
 }
 
 .coin-value-statistics-heading p {
@@ -317,7 +333,7 @@ a:hover {
 }
 
 .coin-link a {
-  color: var(--pink);
+  color: #0071bd !important;
   font-weight: 700;
   font-size: 1rem;
 }
@@ -355,12 +371,6 @@ a:hover {
 
 .select-news {
   width: 280px;
-  /* border-radius: 20px !important;
-  padding: 15px !important;
-  font-size: 14px !important; */
-  /* border-radius: 20px !important;
-  padding: 15px !important;
-  font-size: 14px !important; */
 }
 
 .ant-select-selector {
@@ -389,8 +399,8 @@ a:hover {
 }
 
 .news-image-container .img {
-  /* width: 150px;
-  height: 150px; */
+  width: 150px !important;
+  height: 150px !important;
 }
 .news-card p {
   color: black;
@@ -443,6 +453,10 @@ a:hover {
 }
 .exchange-image {
   margin: 0px 10px !important;
+}
+.col-headers {
+  color: #001529 !important;
+  font-family: 'Montserrat', sans-serif;
 }
 .search-crypto {
   margin: 0px auto 25px auto;

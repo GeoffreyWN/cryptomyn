@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { Helmet } from 'react-helmet'
 
-import { Row, Card, Col, Select, Avatar, Input, Typography } from 'antd'
+import { Row, Card, Col, Select, Avatar, Typography } from 'antd'
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi.js'
 import { useGetCryptosQuery } from '../services/cryptoApi.js'
 import Loader from './Loader.js'
@@ -59,27 +59,6 @@ const News = ({ simplified }) => {
       )}
 
       <Row gutter={[24, 24]}>
-        {/* {!simplified && (
-          <Col span={24}>
-            <Select
-              showSearch
-              className='select-news'
-              placeholder='Select a Crypto'
-              optionFilterProp='children'
-              onChange={(value) => setNewsCategory(value)}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              <Option value='Cryptocurrency '>Cryptocurrency</Option>
-              {data?.data?.coins.map((coin) => (
-                <Option key={coin.name} value={coin.name}>
-                  {coin.name}
-                </Option>
-              ))}
-            </Select>
-          </Col>
-        )} */}
         {cryptoNews.value.map((news, i) => (
           <Col xs={24} lg={8} key={i}>
             <Card hoverable className='news-card'>
@@ -88,15 +67,17 @@ const News = ({ simplified }) => {
                   <Title className='news-title' level={4}>
                     {news.name}
                   </Title>
-                  <img
-                    src={news?.image?.thumbnail?.contentUrl || demoImage}
-                    alt='news'
-                    style={{
-                      maxWidth: '200px',
-                      maxHeight: '200px',
-                      borderRadius: '10px',
-                    }}
-                  />
+                  <div>
+                    <img
+                      src={news?.image?.thumbnail?.contentUrl || demoImage}
+                      alt='news'
+                      style={{
+                        maxWidth: '200px',
+                        maxHeight: '200px',
+                        borderRadius: '10px',
+                      }}
+                    />
+                  </div>
                 </div>
 
                 <p>

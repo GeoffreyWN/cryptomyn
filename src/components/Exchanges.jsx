@@ -7,7 +7,7 @@ import HTMLReactParser from 'html-react-parser'
 import { useGetExchangesQuery } from '../services/cryptoApi'
 import Loader from './Loader'
 
-const { Text } = Typography
+const { Text, Title } = Typography
 const { Panel } = Collapse
 
 const Exchanges = () => {
@@ -23,11 +23,25 @@ const Exchanges = () => {
         <title>CryptoMyn | Exchanges</title>
         <meta name='description' content='Cryptocurrency exchange news' />
       </Helmet>
+
+      <div className='search-crypto'>
+        <Title level={3} className='heading main-heading '>
+          Crypto Exchanges
+        </Title>
+      </div>
       <Row>
-        <Col span={6}>Exchanges</Col>
-        <Col span={6}>24h Trade Volume</Col>
-        <Col span={6}>Markets</Col>
-        <Col span={6}>Change</Col>
+        <Col span={6} className='col-headers'>
+          Exchanges
+        </Col>
+        <Col span={6} className='col-headers'>
+          24h Trade Volume
+        </Col>
+        <Col span={6} className='col-headers'>
+          Markets
+        </Col>
+        <Col span={6} className='col-headers'>
+          Change
+        </Col>
       </Row>
       <Row>
         {exchangesList.map((exchange) => (
@@ -50,9 +64,24 @@ const Exchanges = () => {
                         <strong>{exchange.name}</strong>
                       </Text>
                     </Col>
-                    <Col span={6}>${millify(exchange.volume)}</Col>
-                    <Col span={6}>{millify(exchange.numberOfMarkets)}</Col>
-                    <Col span={6}>{millify(exchange.marketShare)}%</Col>
+                    <Col
+                      span={6}
+                      style={{ fontWeight: 'bold', color: '#B8860B' }}
+                    >
+                      ${millify(exchange.volume)}
+                    </Col>
+                    <Col
+                      span={6}
+                      style={{ fontWeight: 'bold', color: '#3f8600' }}
+                    >
+                      {millify(exchange.numberOfMarkets)}
+                    </Col>
+                    <Col
+                      span={6}
+                      style={{ fontWeight: 'bold', color: '#1890ff' }}
+                    >
+                      {millify(exchange.marketShare)}%
+                    </Col>
                   </Row>
                 }
               >

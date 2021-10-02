@@ -1,9 +1,8 @@
 import React from 'react'
 import millify from 'millify'
 import { Helmet } from 'react-helmet'
-import { Row, Typography, Card, Col, Statistic } from 'antd'
+import { Row, Typography, Card, Col, Statistic, Divider } from 'antd'
 import {
-  FundProjectionScreenOutlined,
   DollarOutlined,
   AreaChartOutlined,
   SwapOutlined,
@@ -92,18 +91,18 @@ const HomePage = () => {
           </Card>
         </Col>
       </Row>
+      <Divider />
       <div className='home-heading-container'>
         <Title level={3} className='home-title'>
           Top 10 Cryptocurrencies in the world
         </Title>
-        {/* <Title level={4} className='show-more'> */}
         <Link to='/cryptocurrencies'>
           <button className='btn-show-more'>Show more</button>
         </Link>
-        {/* </Title> */}
       </div>
       <Cryptocurrencies simplified />
 
+      <Divider />
       <div className='home-heading-container'>
         <Title level={3} className='home-title'>
           Latest Crypto News
