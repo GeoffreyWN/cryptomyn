@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import millify from 'millify'
 import { Helmet } from 'react-helmet'
-import { Row, Card, Col, Input } from 'antd'
+import { Row, Card, Col, Input, Typography } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { useGetCryptosQuery } from '../services/cryptoApi'
 import Loader from './Loader'
+
+const { Title } = Typography
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100
@@ -30,16 +33,28 @@ const Cryptocurrencies = ({ simplified }) => {
       </Helmet>
       {!simplified && (
         <div className='search-crypto'>
+          <Title level={3} className='heading main-heading '>
+            Cryptocurrencies
+          </Title>
           <Input
             placeholder='Search Cryptocurrency'
             onChange={(e) => setSearchTerm(e.target.value)}
+            className='search-crypto-input'
+            prefix={
+              <SearchOutlined
+                style={{
+                  fontSize: 18,
+                  color: '#B8860B',
+                }}
+              />
+            }
           />
         </div>
       )}
 
       <Row gutter={[32, 32]} className='crypto-card-container'>
         {cryptos?.map((currency) => (
-          <Col xs={24} lg={6} className='crypto-card' key={currency.id}>
+          <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.id}>
             <Link to={`/crypto/${currency.id}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
@@ -51,10 +66,31 @@ const Cryptocurrencies = ({ simplified }) => {
                   />
                 }
                 hoverable
+                className='crypto-card-info'
               >
-                <p>Price: {millify(currency.price)}</p>
-                <p>Market Cap: {millify(currency.marketCap)}</p>
-                <p>Daily Change: {millify(currency.change)} %</p>
+                <div className='crypto-card-stats'>
+                  <p>
+                    Price:
+                    <span style={{ fontWeight: 'bold', color: '#b8860b' }}>
+                      {' '}
+                      {millify(currency.price)}{' '}
+                    </span>
+                  </p>
+                  <p>
+                    Market Cap:
+                    <span style={{ fontWeight: 'bold', color: '#3f8600' }}>
+                      {' '}
+                      {millify(currency.marketCap)}{' '}
+                    </span>
+                  </p>
+                  <p>
+                    Daily Change:
+                    <span style={{ fontWeight: 'bold', color: '#001529' }}>
+                      {' '}
+                      {millify(currency.change)} %{' '}
+                    </span>
+                  </p>
+                </div>
               </Card>
             </Link>
           </Col>

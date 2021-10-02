@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { Helmet } from 'react-helmet'
 
-import { Row, Card, Col, Select, Avatar, Typography } from 'antd'
+import { Row, Card, Col, Select, Avatar, Input, Typography } from 'antd'
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi.js'
 import { useGetCryptosQuery } from '../services/cryptoApi.js'
 import Loader from './Loader.js'
@@ -31,8 +31,35 @@ const News = ({ simplified }) => {
         <title>CryptoMyn | News</title>
         <meta name='description' content='Cryptocurrency news' />
       </Helmet>
+
+      {!simplified && (
+        <div className='search-crypto'>
+          <Title level={3} className='heading main-heading '>
+            Crypto News
+          </Title>
+
+          <Select
+            showSearch
+            className='select-news'
+            placeholder='Select a Crypto'
+            optionFilterProp='children'
+            onChange={(value) => setNewsCategory(value)}
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+          >
+            <Option value='Cryptocurrency '>Cryptocurrency</Option>
+            {data?.data?.coins.map((coin) => (
+              <Option key={coin.name} value={coin.name}>
+                {coin.name}
+              </Option>
+            ))}
+          </Select>
+        </div>
+      )}
+
       <Row gutter={[24, 24]}>
-        {!simplified && (
+        {/* {!simplified && (
           <Col span={24}>
             <Select
               showSearch
@@ -52,9 +79,9 @@ const News = ({ simplified }) => {
               ))}
             </Select>
           </Col>
-        )}
+        )} */}
         {cryptoNews.value.map((news, i) => (
-          <Col xs={24} sm={12} lg={8} key={i}>
+          <Col xs={24} lg={8} key={i}>
             <Card hoverable className='news-card'>
               <a href={news.url} target='_blank' rel='noreferrer'>
                 <div className='news-image-container'>
@@ -64,7 +91,11 @@ const News = ({ simplified }) => {
                   <img
                     src={news?.image?.thumbnail?.contentUrl || demoImage}
                     alt='news'
-                    style={{ maxWidth: '200px', maxHeight: '200px' }}
+                    style={{
+                      maxWidth: '200px',
+                      maxHeight: '200px',
+                      borderRadius: '10px',
+                    }}
                   />
                 </div>
 
@@ -88,7 +119,7 @@ const News = ({ simplified }) => {
                     </Text>
                   </div>
 
-                  <Text>
+                  <Text className='period'>
                     {' '}
                     {moment(news.datePublished).startOf('ss').fromNow()}{' '}
                   </Text>

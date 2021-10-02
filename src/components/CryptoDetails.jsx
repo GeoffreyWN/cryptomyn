@@ -35,7 +35,7 @@ const CryptoDetails = () => {
 
   if (isFetching) return <Loader />
 
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y']
+  const time = ['24h', '7d', '30d', '1y', '3m', '3y', '5y']
 
   const stats = [
     {
@@ -95,7 +95,7 @@ const CryptoDetails = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <meta charSet='utf-8' />
         <title>CryptoMyn | {data?.data?.coin.name}</title>
         <meta name='description' content='All cryptocurrency news' />
@@ -110,16 +110,20 @@ const CryptoDetails = () => {
             statistics, market cap and supply.
           </p>
         </Col>
-        <Select
-          defaultValue='7d'
-          className='select-timeperiod'
-          placeholder='Select Timeperiod'
-          onChange={(value) => setTimePeriod(value)}
-        >
-          {time.map((date) => (
-            <Option key={date}>{date}</Option>
-          ))}
-        </Select>
+
+        <div className='select-timeperiod-div'>
+          <Select
+            defaultValue='7d'
+            className='select-timeperiod'
+            placeholder='Select Timeperiod'
+            onChange={(value) => setTimePeriod(value)}
+          >
+            {time.map((date) => (
+              <Option key={date}>{date}</Option>
+            ))}
+          </Select>
+        </div>
+
         <LineChart
           coinHistory={coinHistory}
           currentPrice={millify(cryptoDetails.price)}
