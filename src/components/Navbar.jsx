@@ -8,7 +8,7 @@ import {
   FundOutlined,
   MenuOutlined,
 } from '@ant-design/icons'
-import icon from '../images/logo.png'
+import icon from '../images/logo4.png'
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true)
@@ -35,7 +35,9 @@ const Navbar = () => {
       <div className='logo-container'>
         <Avatar src={icon} size='large' />
         <Typography.Title level={2} className='logo'>
-          <Link to='/'>CryptoMyn</Link>
+          <Link className='logo-title' to='/'>
+            CryptoMyn
+          </Link>
         </Typography.Title>
         <Button
           className='menu-control-container'
@@ -46,17 +48,41 @@ const Navbar = () => {
       </div>
       {activeMenu && (
         <Menu theme='dark'>
-          <Menu.Item key='Home' icon={<HomeOutlined />}>
-            <Link to='/'>Home</Link>
+          <Menu.Item
+            key='Home'
+            className='menu-item'
+            icon={<HomeOutlined className='nav-link-icon' />}
+          >
+            <Link to='/' className='nav-link'>
+              Home
+            </Link>
           </Menu.Item>
-          <Menu.Item key='cryptocurrencies' icon={<FundOutlined />}>
-            <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
+          <Menu.Item
+            key='cryptocurrencies'
+            className='menu-item'
+            icon={<FundOutlined className='nav-link-icon' />}
+          >
+            <Link to='/cryptocurrencies' className='nav-link'>
+              Cryptocurrencies
+            </Link>
           </Menu.Item>
-          <Menu.Item key='exchanges' icon={<MoneyCollectOutlined />}>
-            <Link to='/exchanges'>Exchanges</Link>
+          <Menu.Item
+            key='exchanges'
+            className='menu-item'
+            icon={<MoneyCollectOutlined className='nav-link-icon' />}
+          >
+            <Link to='/exchanges' className='nav-link'>
+              Exchanges
+            </Link>
           </Menu.Item>
-          <Menu.Item key='news' icon={<BulbOutlined />}>
-            <Link to='/news'>News</Link>
+          <Menu.Item
+            key='news'
+            className='menu-item'
+            icon={<BulbOutlined className='nav-link-icon' />}
+          >
+            <Link to='/news' className='nav-link'>
+              News
+            </Link>
           </Menu.Item>
         </Menu>
       )}
