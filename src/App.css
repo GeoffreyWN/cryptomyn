@@ -182,6 +182,16 @@ a:hover {
   .btn-show-more {
     font-size: 14px !important;
   }
+
+  .coin-heading-container .coin-name {
+    font-size: 24px !important;
+  }
+
+  .chart-title {
+    font-size: 23.5px !important;
+    text-align: center;
+    padding: 20px 0px;
+  }
 }
 
 .main-heading {
